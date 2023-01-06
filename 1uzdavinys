@@ -1,0 +1,159 @@
+# -*- coding:utf-8 -*-
+# Sukurti programą, kuri:
+# • Sukurtų failą „Tekstas.txt“ su pilnu tekstu "Zen of Python".
+# • Atspausdintų tekstą iš sukurto failo
+# • Paskutinėje sukurto failo eilutėje pridėtų šiandienos datą ir laiką
+# • Sunumeruotų teksto eilutes (kiekvienos pradžioje pridėtų skaičių).
+# • Sukurtame faile eilutę "Beautiful is better than ugly." pakeistų į "Gražu yra geriau nei bjauru."
+# • Atspausdintų visą failo tekstą atbulai
+# • Atspausdintų, kiek failo tekste yra žodžių, skaičių, didžiųjų ir mažųjų raidžių
+# • Nukopijuotų visą sukurto failą tekstą į naują failą, tik DIDŽIOSIOMIS RAIDĖMIS
+# Patarimai:
+# • Naudoti from datetime import datetime, datetime.today()
+# • Kintamajam priskirti sakinį, kuriuo bus operuojama, eilutėmis
+# • Kai kur galima panaudoti funkcijas iš praeitų pamok
+
+from datetime import datetime
+
+zen = '''
+The Zen of Python, by Tim Peters
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+'''
+
+def atbulai(sakinys):
+    return sakinys[::-1]
+
+def patikrinti_sakini(sakinys):
+    print("Žodžių kiekis:", len(sakinys.split()))
+    print("Skaičių kiekis:", sum(c.isdigit() for c in sakinys))
+    print("Didžiųjų raidžių:", sum(c.isupper() for c in sakinys))
+    print("Mažųjų raidžių:", sum(c.islower() for c in sakinys))
+
+def didziosiomis(sakinys):
+    return sakinys.upper()
+
+# 1. Sukurti failą tekstas.txt su tekstu:
+
+with open('tekstas.txt', 'w') as failas:
+    failas.write(zen)
+
+# 2. Atspausdintų tekstą iš sukurto failą:
+
+with open('tekstas.txt', 'r') as failas:
+    print(failas.read())
+
+# 3. Paskutinėje sukurto failo eilutėje pridėtų šiandien datą:
+
+with open('tekstas.txt', 'a') as failas:
+    failas.write(str(datetime.today()))
+
+# 4. Sunumeruoti visas failo teksto eilutes (kiekvienos pradžioje pridėti skaičių):
+
+naujas = ""
+skaicius = 1
+with open('tekstas.txt', 'r') as failas:
+    for eilute in failas:
+        naujas += str(skaicius) + " " + eilute
+        skaicius += 1
+
+with open('tekstas.txt', 'w') as failas:
+    failas.write(naujas)
+
+
+# 5. Sukurtame faile eilutę "Beautiful is better than ugly." pakeisti į "Gražu yra geriau nei bjauru.":
+
+pakeitimas = ""
+
+with open('tekstas.txt', 'r') as failas:
+    pakeitimas = failas.read()
+
+pakeitimas = pakeitimas.replace("Beautiful is better than ugly.", "Gražu yra geriau nei bjauru.")
+
+with open('tekstas.txt', 'w', encoding="UTF-8") as failas:
+    failas.write(pakeitimas)
+
+# 6. Atspausdintų visą failo tekstą atbulai:
+
+with open('tekstas.txt', 'r') as failas:
+    print(atbulai(failas.read()))
+
+# 7. Atspausdintų, kiek failo tekste yra žodžių, skaičių, didžiųjų ir mažųjų raidžių:
+
+with open('tekstas.txt', 'r') as failas:
+    print(patikrinti_sakini(failas.read()))
+
+# 8. Nukopijuotų visą sukurto failą tekstą į naują failą, tik DIDŽIOSIOMIS RAIDĖMIS:
+
+with open('tekstas.txt', 'r', encoding="UTF-8") as nuskaitomas_failas:
+    with open('tekstas_didziosiomis.txt', "w", encoding="UTF-8") as irasomas_failas:
+        irasomas_failas.write(didziosiomis(nuskaitomas_failas.read()))
+        
+  #output
+  The Zen of Python, by Tim Peters
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+080965.33:74:81 60-10-3202 22
+!esoht fo erom od s'tel -- aedi taerg gniknoh eno era secapsemaN 12
+.aedi doog a eb yam ti ,nialpxe ot ysae si noitatnemelpmi eht fI 02
+.aedi dab a s'ti ,nialpxe ot drah si noitatnemelpmi eht fI 91
+.won *thgir* naht retteb netfo si reven hguohtlA 81
+.reven naht retteb si woN 71
+.hctuD er'uoy sselnu tsrif ta suoivbo eb ton yam yaw taht hguohtlA 61
+.ti od ot yaw suoivbo-- eno ylno ylbareferp dna --eno eb dluohs erehT 51
+.sseug ot noitatpmet eht esufer ,ytiugibma fo ecaf eht nI 41
+.decnelis ylticilpxe sselnU 31
+.yltnelis ssap reven dluohs srorrE 21
+.ytirup staeb ytilacitcarp hguohtlA 11
+.selur eht kaerb ot hguone laiceps t'nera sesac laicepS 01
+.stnuoc ytilibadaeR 9
+.esned naht retteb si esrapS 8
+.detsen naht retteb si talF 7
+.detacilpmoc naht retteb si xelpmoC 6
+.xelpmoc naht retteb si elpmiS 5
+.ticilpmi naht retteb si ticilpxE 4
+.uruajb ien uaireg ary u¾ÅarG 3
+sreteP miT yb ,nohtyP fo neZ ehT 2
+ 1
+Žodžių kiekis: 168
+Skaičių kiekis: 55
+Didžiųjų raidžių: 26
+Mažųjų raidžių: 649
+None
+
+Process finished with exit code 0
