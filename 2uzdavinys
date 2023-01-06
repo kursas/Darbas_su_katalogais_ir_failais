@@ -1,0 +1,37 @@
+# -*- coding:utf-8 -*-
+# Sukurti programą, kuri:
+# • Kompiuterio darbalaukyje (Desktop) sukurtų katalogą „Naujas Katalogas“
+# • Šiame kataloge sukurtų tekstinį failą, kuriame būtų šiandienos data ir laikas
+# • Atspausdintų šio tekstinio failo sukūrimo datą ir dydį baitais
+# Patarimai:
+# • Failo sukūrimo datą galima pasiekti per os.stat(„Failas.txt“).st_ctime
+
+import os
+from datetime import datetime
+
+# 1 Ant darbalaukio sukurtų naują katalogą "Mano Katalogas"
+
+try:
+    os.chdir('D:\\DUMENYS\\DARIUS\\Desktop')
+    os.mkdir("Naujas katalogas")
+except:
+    "Toks katalogas jau yra"
+
+os.chdir('D:\\DUMENYS\\DARIUS\\Desktop\\Naujas katalogas')
+
+# 2 Jame sukurtų failą "data.txt", kurios tektas - šiandienos data ir laikas
+
+with open("data.txt", "w") as failas:
+    failas.write(str(datetime.today()))
+
+# 3 Atspaudintų, kada naujas failas buvo modifikuotas ir kiek jis užima baitų
+os.chdir('D:\\DUMENYS\\DARIUS\\Desktop\\Naujas katalogas')
+
+print("Sukūrimo data:", datetime.fromtimestamp(os.stat("data.txt").st_ctime))
+print("Failo dytis:", os.stat("data.txt").st_size)
+
+#output
+Sukūrimo data: 2023-01-06 18:58:50.054499
+Failo dytis: 26
+
+Process finished with exit code 0
