@@ -1,0 +1,12 @@
+Iðrinkite visus þodþius, prasidedanèius viena didþiàja raide.
+Iðrinkite visus þodþius, kurie yra ið visø didþiøjø raidþiø (PVM, SWIFT, HABALT22)
+Paraðykite ðablonà trumpàjam telefono numeriui (nereikia idealaus, tiesiog iðrinkite 1884 ir 1663)
+Paraðykite ðablonà ilgàjam telefono numeriui
+Paraðykite ðablonà fakso numeriui
+Paraðykite ðablonà, kuris tiktø ir ilgàjam telefono numeriui, ir faksui (naudokite '|' ir grupavimà)
+Paraðykite ðablonà banko sàskaitos numeriui
+Paraðykite ðablonà PVM mokëtojo kodui
+Iðrinkite visus þodþius prieð dvitaðká
+Paraðykite paprastà ðablonà el. paðtui
+[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6} - Tai yra nesudëtingas el. paðto ðablonas. Iðnagrinëkite, palyginkite su savo sukurtu.
+Nebûtina kas kartà kurti to, kas jau senai atitirbta. Internete gausu informacijos apie daþniausiai naudojamus regex ðablonus. Pvz. https://digitalfortress.tech/tricks/top-15-commonly-used-regex/ - pasinagrinëkite.
